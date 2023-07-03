@@ -1,0 +1,49 @@
+{
+  "name": "address-book",
+  "version": "1.0.0",
+  "description": "Simple Address Book application",
+  "main": "./backend/dist/server.js",
+  "private": true,
+  "scripts": {
+    "start": "npm run start:backend",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:backend": "cd backend && npm run start",
+    "backend": "cd backend && npm run dev",
+    "frontend": "cd frontend && npm run start",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "build": "concurrently \"npm run build:backend\" \"npm run build:frontend\"",
+    "build:backend": "cd backend && npm run build",
+    "build:frontend": "cd frontend && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barisozdag/address-book.git"
+  },
+  "keywords": [
+    "address",
+    "book",
+    "typescript",
+    "node",
+    "angular"
+  ],
+  "author": {
+    "name": "Manal Magdy",
+    "email": "manalmagdy722@gmail.com",
+    "url": ""
+  },
+  "license": "",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "engines": {
+    "node": ">=18.10.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "mogoose": "^0.0.1-security"
+  }
+}

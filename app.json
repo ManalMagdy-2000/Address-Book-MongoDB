@@ -1,0 +1,17 @@
+{
+  "name": "Address Book",
+  "description": "Simple Address Book application to apply storybook",
+  "keywords": [
+    "address",
+    "book",
+    "typescript",
+    "node",
+    "angular"
+  ],
+  "env": {
+    "MONGODB": {
+      "description": "MongoDB connection URI. ex. mongodb://user:password@mongodb0.example.com:27017/dbname"
+    }
+  },
+  "stack": "container"
+}

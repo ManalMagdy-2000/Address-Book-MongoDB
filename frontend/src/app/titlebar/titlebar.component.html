@@ -1,0 +1,45 @@
+<mat-toolbar color="primary">
+  <button
+    mat-icon-button
+    type="button"
+    color="link"
+    *ngIf="currentPath !== ''"
+    (click)="back()"
+  >
+    <mat-icon aria-hidden="false" aria-label="Back">chevron_left</mat-icon>
+  </button>
+  <div>Address Book</div>
+  <div class="spacer"></div>
+  <a
+    mat-icon-button
+    aria-label="Search"
+    [routerLink]="['/search']"
+  >
+    <mat-icon>search</mat-icon>
+  </a>
+  <a
+    mat-button
+    *ngIf="currentPath === ''"
+    aria-label="Add new contact"
+    [routerLink]="['/contact', 'add']"
+  >
+    Add
+  </a>
+  <a
+    mat-button
+    *ngIf="currentPath === 'contact/:id' && contact"
+    aria-label="Edit contact"
+    [routerLink]="['/contact', 'edit', contact._id]"
+  >
+    Edit
+  </a>
+  <button
+    mat-icon-button
+    type="button"
+    *ngIf="currentPath === 'contact/edit/:id' || currentPath === 'contact/add'"
+    aria-label="Cancel"
+    (click)="back()"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>

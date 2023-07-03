@@ -1,0 +1,58 @@
+<app-titlebar></app-titlebar>
+
+<form
+  [formGroup]="contactForm"
+  (ngSubmit)="submitForm()"
+>
+  <mat-card>
+    <mat-form-field class="full-width">
+      <mat-icon matPrefix>person</mat-icon>
+      <input
+        matInput
+        placeholder="Name"
+        formControlName="name"
+      />
+      <mat-error *ngIf="handleError('name', 'required')">
+        You must provide a <strong>name</strong>
+      </mat-error>
+      <mat-error *ngIf="handleError('name', 'minlength')">
+        Name must be longer than <strong>3 characters</strong>
+      </mat-error>
+      <mat-error *ngIf="handleError('name', 'notUnique')">
+        Name is <strong>already in contacts</strong>
+      </mat-error>
+    </mat-form-field>
+    <div formArrayName="phones">
+      <mat-form-field class="full-width" *ngFor="let phone of phones.controls; let i=index">
+        <mat-icon matPrefix>phone</mat-icon>
+        <input
+          matInput
+          phoneMask
+          placeholder="Phone"
+          [formControlName]="i"
+        />
+        <button type="button" mat-icon-button matSuffix (click)="i === 0 ? addPhone() : removePhone(i)">
+          <mat-icon>{{ i === 0 ? 'add_circle_outline' : 'remove_circle_outline' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="handleError('phones.' + i, 'required')">
+          You must provide a <strong>phone</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <mat-form-field class="full-width">
+      <mat-icon matPrefix>mail</mat-icon>
+      <input
+        matInput
+        type="email"
+        placeholder="E-Mail"
+        formControlName="mail"
+      />
+      <mat-error *ngIf="handleError('mail', 'email') || handleError('mail', 'pattern')">
+        You must provide a valid <strong>e-mail</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-card-actions>
+      <button mat-button color="primary" [disabled]="!contactForm.valid">Add Contact</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
